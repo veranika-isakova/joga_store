@@ -15,3 +15,10 @@ sleep 2
 @products.each do |item|
   puts "item: #{item[:name]} \n  reference_number: #{item[:reference_number]} \n price: #{item[:price]}"
 end
+
+puts "Please put your REFERENCE NUMBER"
+user_reference_number = gets.to_i
+
+selected_products = @products.select { |product| product [:reference_number] == user_reference_number}
+shopping_cart << selected_products
+puts shopping_cart
