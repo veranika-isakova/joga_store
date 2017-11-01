@@ -15,7 +15,7 @@
 #User should be able to select a product by its reference_number and it will be added to the shopping cart.
 def listing_items
   @products.each do |item|
- puts "item: #{item[:name]} \n  reference_number: #{item[:reference_number]} \n price: #{item[:price]}"
+ puts "item: #{item[:name]} \n reference_number: #{item[:reference_number]} \n price: #{item[:price]}"
 end
 end
 
@@ -53,12 +53,23 @@ def continue_shopping
   @answer = gets.chomp.upcase
 end
 
+#If user decides to checkout, print out a bye-bye message.
+
 
 puts "Welcome to our store!"
 sleep 2
 
 listing_items
-reference_number = select_products
-add_product_to_cart(reference_number)
-print_shopping_card
-continue_shopping
+
+loop do
+  reference_number = select_products
+  add_product_to_cart(reference_number)
+  print_shopping_card
+  continue_shopping
+
+  if @answer == "N"
+    puts "Bye-bye!!!"
+  break
+
+  end
+end
